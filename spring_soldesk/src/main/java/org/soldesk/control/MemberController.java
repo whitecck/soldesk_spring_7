@@ -23,10 +23,10 @@ public class MemberController {
 		this.dao = dao;
 	}
 	
-	@RequestMapping(value="/MemberAll")
+	@RequestMapping(value="/memberAll")
 	public String list(Model model) {
-		List<CustomerDTO> list = dao.CustomerSelectAll();
-		model.addAttribute("list", list);
+		/*List<CustomerDTO> list = dao.CustomerSelectAll();
+		model.addAttribute("list", list);*/
 		
 		return "MemberAll";
 	}

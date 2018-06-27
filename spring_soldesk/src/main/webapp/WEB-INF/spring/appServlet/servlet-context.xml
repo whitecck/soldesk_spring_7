@@ -25,6 +25,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="org.soldesk.web" />
+	<context:component-scan base-package="org.soldesk.control"/>
+	<context:component-scan base-package="org.soldesk.DAO" />
+	<context:component-scan base-package="org.soldesk.DTO" />
 	
 	
 	

@@ -20,8 +20,4 @@
 		select *
 		from tbl_member 
 		where userid=#{userid} and userpw=#{userpw}</select>
-		
-		<select id="selectMember" resultType="org.soldesk.DTO.MemberDTO">
-			select * from customer
-		</select>
 </mapper>
