@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>jsp test 1212</h2>
+<h2>jsp 테스트 1212</h2>
 </body>
 </html>
