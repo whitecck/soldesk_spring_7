@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>memberAll.jsp</h2>
-	<h2>전체 멤버조회</h2>
+	<h2>updel.jsp</h2>
+	<h2>회우우너 정보 수정 창 </h2>
+	<h2>회원 탈퇴 창 택해야함</h2>
 </body>
 </html>

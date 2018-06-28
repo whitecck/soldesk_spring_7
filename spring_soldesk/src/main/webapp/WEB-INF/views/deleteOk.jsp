@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>memberAll.jsp</h2>
-	<h2>전체 멤버조회</h2>
+	<h2>delete.jsp</h2>
+	<h2>삭제후 올 페이지</h2>
+
 </body>
 </html>
