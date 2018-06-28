@@ -47,6 +47,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 		ss.delete("CustomerDelete", c_id);
 		
 	}
+
+	@Override
+	public void CustomerUpdate2(CustomerDTO customerDTO) {
+		ss.update("CustomerUpdate2", customerDTO);
+		
+	}
 	
 	
 	
