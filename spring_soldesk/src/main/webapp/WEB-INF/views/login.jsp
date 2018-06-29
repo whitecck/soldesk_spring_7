@@ -30,10 +30,30 @@
 }
 
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	function dosubmit() {
-		document.frm.submit();
-	}
+	$(function(){
+		$("#btn").on('click',function(){
+			var userid = $("#id").val();
+			var userpw = $("#pw").val();
+			if(userid==""){
+				alert("아이디를 입력해주세요");
+				$("#id").focus();
+				return;
+			}
+			if(userpw==""){
+				alert("비밀번호를 입력하세요");
+				$("pw").focus();
+				return
+			}
+			
+			console.log(userid +  " : " +userpw);
+			
+			document.frm.action="loginOk";
+			document.frm.method="GET";
+			document.frm.submit();
+		});
+	});
 </script>
 
 <title>푸드패스:로그인</title>
@@ -49,7 +69,7 @@
 	<div id="container">
 		<!-- input: login part -->
 		<div id="content">
-			<form action="" id="frm" name="frm">
+			<form action="/loginOk" id="frm" name="frm">
 			
 			<div id="input">
 				<div id="input_radio">
@@ -62,7 +82,7 @@
 					<input type="password" name="pw" id="pw" placeholder="  비밀번호"/></div>
 					
 				<div id="login_btn">
-					<input type="button" value="로그인" onclick="dosubmit()"/>
+					<input type="button" value="로그인"  id="btn"/>
 				</div>
 			</div>
 			</form>	
