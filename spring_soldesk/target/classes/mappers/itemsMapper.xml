@@ -19,7 +19,7 @@
   
   	<insert id="ItemsInsert" parameterType="org.soldesk.DTO.ItemsDTO">
   		insert into items (i_name,i_price,i_category,i_desc,i_image)
-  		values (#{i_name,#{i_price},#{i_category},#{i_desc},#{i_image})
+  		values (#{i_name},#{i_price},#{i_category},#{i_desc},#{i_image})
   	</insert>
   	
   	<update id="ItemsUpdate" parameterType="org.soldesk.DTO.ItemsDTO">
