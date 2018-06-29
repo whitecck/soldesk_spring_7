@@ -50,7 +50,8 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public void CustomerUpdate2(CustomerDTO customerDTO) {
-		ss.update("CustomerUpdate2", customerDTO);
+		ss.update(""
+				+ "", customerDTO);
 		
 	}
 	

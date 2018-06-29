@@ -19,15 +19,18 @@
   	
   	<insert id="CustomerInsert" parameterType="org.soldesk.DTO.CustomerDTO">
   		insert into customer
-  		values (#{c_id},#{c_name},#{c_phone},#{c_loginid},#{c_pw},#{c_email},0)
+  		values (#{c_name},#{c_phone},#{c_loginid},#{c_pw},#{c_email},0)
   	
   	</insert>
   	
+  	<!--개인정보 수정용  -->
   	<update id="CustomerUpdate" parameterType="org.soldesk.DTO.CustomerDTO">
   		update customer set
   		c_name = #{c_name} , c_phone = #{c_phone}, c_pw = #{c_pw},c_email = #{c_email}
   		where c_id = #{c_id}
   	</update>
+  	
+  	<!--도토리 수정용  -->
   	<update id="CustomerUpdate2" parameterType="org.soldesk.DTO.CustomerDTO">
   		update customer set
   		c_dotori = #{c_dotori}
