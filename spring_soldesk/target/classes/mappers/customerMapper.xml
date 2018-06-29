@@ -18,7 +18,7 @@
   	</select>
   	
   	<insert id="CustomerInsert" parameterType="org.soldesk.DTO.CustomerDTO">
-  		insert into customer
+  		insert into customer (c_name,c_phone,c_loginid,c_pw,c_email,c_dotori)
   		values (#{c_name},#{c_phone},#{c_loginid},#{c_pw},#{c_email},0)
   	
   	</insert>

@@ -9,11 +9,12 @@ public class SellerDTO {
 	private String s_email; //이메일
 	private int s_open; // 개점여부
 	private int s_dotori; //보유 액수
+	private int s_location; // 위치
 	
 	public SellerDTO () {}
 
 	public SellerDTO(int s_id, String s_name, String s_phone, String s_loginid, String s_pw, String s_email, int s_open,
-			int s_dotori) {
+			int s_dotori, int s_location) {
 		super();
 		this.s_id = s_id;
 		this.s_name = s_name;
@@ -23,6 +24,7 @@ public class SellerDTO {
 		this.s_email = s_email;
 		this.s_open = s_open;
 		this.s_dotori = s_dotori;
+		this.s_location = s_location;
 	}
 
 	public int getS_id() {
@@ -87,6 +89,14 @@ public class SellerDTO {
 
 	public void setS_dotori(int s_dotori) {
 		this.s_dotori = s_dotori;
+	}
+
+	public int getS_location() {
+		return s_location;
+	}
+
+	public void setS_location(int s_location) {
+		this.s_location = s_location;
 	}
 	
 	
