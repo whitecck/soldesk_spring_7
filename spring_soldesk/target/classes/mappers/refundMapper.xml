@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SQL을 저장하는 mapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.soldesk.mapper.refundMapper">
+	<select id="RefundSelectAll" parameterType="int">
+		select r.r_id, r_account, r.r_date, r.r_money,r.s_id
+		from refund r, seller s
+		where #{r.s_id} = #{s.s_id}
+	
+	</select>
+	
+		<select id="RefundgetData" parameterType="int" resultType="org.soldesk.DTO.RefundDTO">
+		select r.r_id, r_account, r.r_date, r.r_money,r.s_id
+		from refund r, seller s
+		where #{r.r_id}=(r.s_id = s.s_id);
+		
+		</select>
+		
+		<insert id="RefundInsert" parameterType="org.soldesk.DTO.RefundDTO">
+		insert into refund (r_account,r_date,r_money,s_id)
+		values (#{r_account},now(),#{r_money},#{s_id})
+		
+		</insert>
+		
+		
+
+</mapper>

@@ -6,5 +6,36 @@
   
   <mapper namespace="org.soldesk.mapper.sellerMapper">
   	
+  	<select id="SellerSelectAll">
+  	
+  	select * from seller
+  	
+  	</select>
+  	
+  	<select id="SellergetData" resultType="org.soldesk.DTO.SellerDTO" parameterType="int">
+  	
+  	select * from seller
+  	where s_id = #{s_id}
+  	</select>
+  
+  	<insert id="SellerInsert" parameterType="org.soldesk.DTO.SellerDTO">
+  	
+  	insert into seller (s_name,s_phone,s_loginid,s_pw,s_email,s_location)
+  	values (#{s_name},#{s_phone},#{s_loginid},#{s_pw},#{s_email},#{s_location})
+  	
+  	</insert>
+  	
+  	<update id="SellerUpdate" parameterType="org.soldesk.DTO.SellerDTO">
+  	
+  	update seller set
+  	s_name =#{s_name}, s_phone =#{s_phone}, s_pw=#{s_pw},s_email=#{s_email},s_location=#{s_location}
+  	where s_id = #{s_id}
+  	</update>
+  	
+  	<delete id="SellerDelete">
+  	delete from seller
+  	where s_id = #{s_id}
+  	
+  	</delete>
   
   </mapper>

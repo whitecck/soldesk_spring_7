@@ -5,17 +5,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="org.soldesk.mapper.paymentMapper">
-  	<select id="PaymentSelectAll">
-  		select * from payment
-  		order by p_id desc
+  	<select id="PaymentSelectAll" parameterType="int">
+  		select p.p_id,p.p_date,p.p_way,p.c_id
+		from customer c, payment p 
+		where #{c.c_id}=#{p.c_id};
   	</select>
   	
   	<select id="PaymentgetData" resultType="org.soldesk.DTO.PaymentDTO" parameterType="int">
-  		select * from payment
-  		where p_id =#{p_id}
+  		select p.p_id,p.p_date,p.p_way,p.c_id
+		from customer c, payment p 
+		where #{p.p_id} = (#{c.c_id}=#{p.c_id});
   	</select>
   	
-  	<insert id="PaymentInsert">
+  	<insert id="PaymentInsert" parameterType="org.soldesk.DTO.PaymentDTO">
   		<!-- 참고 -->
   		insert into payment(p_date,p_way,c_id)
   		values (now(),#{p_way},#{c_id})
