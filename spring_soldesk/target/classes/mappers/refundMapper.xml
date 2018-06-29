@@ -4,17 +4,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.soldesk.mapper.refundMapper">
-	<select id="RefundSelectAll" parameterType="int">
-		select r.r_id, r_account, r.r_date, r.r_money,r.s_id
-		from refund r, seller s
-		where #{r.s_id} = #{s.s_id}
+		<select id="RefundSelectAll" parameterType="int">
+		select * from refund
 	
-	</select>
+		</select>
 	
 		<select id="RefundgetData" parameterType="int" resultType="org.soldesk.DTO.RefundDTO">
 		select r.r_id, r_account, r.r_date, r.r_money,r.s_id
 		from refund r, seller s
-		where #{r.r_id}=(r.s_id = s.s_id);
+		where #{r.s_id} = #{s.s_id}
 		
 		</select>
 		

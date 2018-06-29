@@ -10,11 +10,12 @@ public class SellerDTO {
 	private int s_open; // 개점여부
 	private int s_dotori; //보유 액수
 	private int s_location; // 위치
+	private String s_image; //가게 사진
 	
 	public SellerDTO () {}
 
 	public SellerDTO(int s_id, String s_name, String s_phone, String s_loginid, String s_pw, String s_email, int s_open,
-			int s_dotori, int s_location) {
+			int s_dotori, int s_location, String s_image) {
 		super();
 		this.s_id = s_id;
 		this.s_name = s_name;
@@ -25,6 +26,7 @@ public class SellerDTO {
 		this.s_open = s_open;
 		this.s_dotori = s_dotori;
 		this.s_location = s_location;
+		this.s_image = s_image;
 	}
 
 	public int getS_id() {
@@ -98,6 +100,15 @@ public class SellerDTO {
 	public void setS_location(int s_location) {
 		this.s_location = s_location;
 	}
+
+	public String getS_image() {
+		return s_image;
+	}
+
+	public void setS_image(String s_image) {
+		this.s_image = s_image;
+	}
+	
 	
 	
 	

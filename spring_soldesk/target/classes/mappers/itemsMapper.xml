@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SQL을 저장하는 mapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="org.soldesk.mapper.itemsMapper">
+  	<select id="ItemsSelectAll">
+  		select * 
+  		
+  		from items
+  
+  	</select>
+  	
+  	<select id="ItemsgetData" resultType="org.soldesk.DTO.ItemsDTO" parameterType="int">
+  		select i.i_name,i.i_price,i.i_category,i.i_desc,i.i_image
+  		from items i , seller s
+  		where #{i.s_id} = #{s.s_id}
+  	</select>
+  
+  	<insert id="ItemsInsert" parameterType="org.soldesk.DTO.ItemsDTO">
+  		insert into items (i_name,i_price,i_category,i_desc,i_image)
+  		values (#{i_name,#{i_price},#{i_category},#{i_desc},#{i_image})
+  	</insert>
+  	
+  	<update id="ItemsUpdate" parameterType="org.soldesk.DTO.ItemsDTO">
+  		update items set
+  		i_name = #{i_name}, i_price = #{i_price}, i_category = #{i_category}, i_desc=#{i_desc}, i_image= #{i_image}
+  		where i_id = #{i_id}
+  	</update>
+  	<delete id="ItemsDelete" parameterType="int">
+  		delete from items
+  		where i_id = #{i_id}
+  	
+  	</delete>
+  
+  </mapper>
+  

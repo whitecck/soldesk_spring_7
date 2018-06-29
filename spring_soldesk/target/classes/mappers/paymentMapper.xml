@@ -6,15 +6,13 @@
   
   <mapper namespace="org.soldesk.mapper.paymentMapper">
   	<select id="PaymentSelectAll" parameterType="int">
-  		select p.p_id,p.p_date,p.p_way,p.c_id
-		from customer c, payment p 
-		where #{c.c_id}=#{p.c_id};
+  		select * from payment
   	</select>
   	
   	<select id="PaymentgetData" resultType="org.soldesk.DTO.PaymentDTO" parameterType="int">
   		select p.p_id,p.p_date,p.p_way,p.c_id
 		from customer c, payment p 
-		where #{p.p_id} = (#{c.c_id}=#{p.c_id});
+		where #{c.c_id}=#{p.c_id};
   	</select>
   	
   	<insert id="PaymentInsert" parameterType="org.soldesk.DTO.PaymentDTO">

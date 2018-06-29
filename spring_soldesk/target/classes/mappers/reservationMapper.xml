@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SQL을 저장하는 mapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.soldesk.mapper.reservationMapper">
+  	<select id="ReservationSelectAll">
+  		select * from reservation
+  	
+  	</select>
+  	
+  	<select id="ReservationgetData" parameterType="int" resultType="org.soldesk.DTO.RefundDTO">
+  		select * 
+  		from reservation
+  		where r_no = #{r_no}
+  	</select>
+  	
+  	<insert id="ReservationInsert" parameterType="org.soldesk.DTO.RefundDTO">
+  	
+  		insert into reservation(r_date,r_bool,r_request,r_money,c_id,s_id,i_id)
+  		values (now(),#{r_bool},#{r_request},#{r_money},#{c_id},#{s_id},#{i_id})
+  	
+  	</insert>
+  	<update id="ReservationUpdate" parameterType="org.soldesk.DTO.RefundDTO">
+  	
+  		update reservation set
+  		r_rdate = now(), r_bool =#{r_bool}, r_request =#{r_request}
+  		where r_no = #{r_no}
+  	</update>
+  		<delete id="ReservationDelete" parameterType="int">
+  		delete from reservation
+  		where r_no = #{r_no}
+  		
+  		</delete>
+  
+  </mapper>
