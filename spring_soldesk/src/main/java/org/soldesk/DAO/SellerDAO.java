@@ -11,4 +11,6 @@ public interface SellerDAO {
 	public void SellerInsert(SellerDTO sellerDTO);//추가
 	public void SellerUpdate(SellerDTO sellerDTO);//변경
 	public void SellerDelete(int s_id);//삭제
+	public List<SellerDTO> SellerOpen();
+	public List<SellerDTO> SellerOpenLoc(String s_location);
 }

@@ -48,4 +48,15 @@ public class SellerDAOImpl implements SellerDAO{
 		ss.delete("SellerDelete", s_id);
 	}
 
+	@Override
+	public List<SellerDTO> SellerOpen() {
+
+		return ss.selectList("SellerOpenAll");
+	}
+
+	@Override
+	public List<SellerDTO> SellerOpenLoc(String s_location) {
+		return ss.selectList("SellerOpenLoc", s_location);
+	}
+
 }
