@@ -8,18 +8,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		$("#c_iid").hide();
 		$("#btn").on('click',function(){
 			var loginid = $("#c_loginid").val();
 			var id = $("#c_id").val();
+			var iid = $("#c_iid").val();
 			console.log(loginid);
 			console.log(id);
 		});
 		$("#update").on('click',function(){
 			
+			if(id == iid){
+				
 			document.frm.action="updateOk";
 			document.frm.method="GET";
 			document.frm.submit();
 			console.log(loginid);
+				
+			}else {
+				alert("회원번호를 똑바로 입력해주세여");
+				$("#c_id").focus();
+				return
+			}
+			
 		});
 	});
 </script>
@@ -27,6 +38,7 @@
 <body>
 	<h2>update.jsp</h2>
 	<form action="/updateOk" id="frm" name="frm">
+	<input type="text" name="c_iid" id="c_iid" value="${list.c_id }" />
 	<table>
 		<tr>
 			<th>회원번호</th>

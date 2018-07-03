@@ -57,8 +57,13 @@ public class MemberController {
 	public String signupUser() {
 		return "signupUser";
 	}
+	
+	@RequestMapping("/signupTruck")
+	public String signupTruck() {
+		return "signupTruck";
+	}
 
-	@RequestMapping("/insertOk")
+	@RequestMapping("/userinsertOk")
 	// 회원가입
 	public ModelAndView insertOk(@ModelAttribute CustomerDTO cdto, Model model) {
 		// 작동 잘됨

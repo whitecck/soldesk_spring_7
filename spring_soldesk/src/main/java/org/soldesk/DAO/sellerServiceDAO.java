@@ -7,7 +7,6 @@ import org.soldesk.DTO.SellerDTO;
 public interface sellerServiceDAO {
 	public boolean loginCheck(String id, String pw);
 	public SellerDTO viewMember(String id);
-	public void logout (HttpSession session);
 	public SellerDTO selectOne(String id);
-	public void customerUpdate(int c_id, String c_name,String c_phone,String c_pw, String c_email,SellerDTO dto);
+	public void customerUpdate(int s_id, String s_name,String s_phone,String s_pw, String s_email,SellerDTO dto);
 }

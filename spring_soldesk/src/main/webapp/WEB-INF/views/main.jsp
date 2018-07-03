@@ -11,7 +11,7 @@
     <h2>session ${sessionScope.suerNumber } </h2>
     <h2>${c_id }</h2>
     <h2>id : ${list.c_id }</h2>
-    <h2>${list.c_pw }</h2>
-    <h2>${list.c_name }</h2>
+    <h2>pw : ${list.c_pw }</h2>
+    <h2>na : ${list.c_name } </h2>
 </body>
 </html>

@@ -8,6 +8,7 @@
   		select * from customer 
   		where c_loginid = #{c_loginid}
   	</select>
+  	
   	<select id="loginCheckPw" resultType="String">
   		select * from customer
   		where c_pw = #{c_pw}
@@ -18,24 +19,24 @@
   		where c_loginid = #{c_loginid} and c_pw = #{c_pw}
   	</select>
   	
-  	
   	<select id="viewMember" resultType="org.soldesk.DTO.CustomerDTO">
   		select * from customer
   		wehre c_loginid = #{c_loginid}
   	</select>
   	
-  	<!-- <select id="loginSeller" resultType="org.soldesk.DTO.sellerDTO" parameterType="String">
+  	<select id="selCheckId" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
   		select * from seller
-  		where s_loginid = #{s_loginid} and s_pw = #{s_pw}
-  	</select>
-  	
-  	<select id="sellerCk" resultType="String">
-  		select * from seller
-  		where s_loginid = #{s_loginid} and s_pw = #{s_pw}
-  	</select>
-  	
-  	<select id="viewSeller" resultType="org.soldesk.DTO.sellerDTO">
-  		select * form seller
   		where s_loginid = #{s_loginid}
-  	</select> -->
+  	</select>
+  	
+  	<select id="selloginCk" resultType="String">
+  		select * from seller
+  		where s_loginid = #{s_loginid} and s_pw = #{s_pw}
+  	</select>
+  	
+  	<select id="viewSeller" resultType="org.soldesk.DTO.SellerDTO">
+  		select * from seller
+  		where s_loginid = #{s_loginid}
+  	</select>
+  	
   </mapper>

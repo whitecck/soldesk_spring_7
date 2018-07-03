@@ -42,38 +42,54 @@ public class ServiceContoller {
 
 	@RequestMapping(value = "/loginOk", method = RequestMethod.GET)
 	public ModelAndView loginOk(@RequestParam String id, @RequestParam String pw, @RequestParam String type,
-			HttpSession session, @ModelAttribute CustomerDTO dto,@ModelAttribute SellerDTO sdto) {
+			HttpSession session, @ModelAttribute CustomerDTO dto, @ModelAttribute SellerDTO sdto) {
 
-		boolean result = cs.loginCheck(id, pw);
 		ModelAndView mv = new ModelAndView();
+		// System.out.println(result);
 		System.out.println(type);
-		System.out.println(result);
-		String ty = type;
-
-		if (ty == "a") {
+		System.out.println(id);
+		System.out.println(pw);
+		System.out.println(type);
+		// System.out.println(srs);
+		boolean result = cs.loginCheck(id, pw);
+		boolean srs = cs.selloginCheck(id, pw);
+		System.out.println("result : " + result);
+		System.out.println("srs : " + srs);
+		if (type.equals("a")) {
+			// 일반유저
 			if (result == true) {
-
+				//System.out.println("a의 true");
 				dto = cs.selectCustomer(id);
 				mv.setViewName("main");
 				session.setMaxInactiveInterval(60 * 60);
-				session.setAttribute("c_loginid", id);
 				session.setAttribute("list", dto);
 				mv.addObject("msg", "success");
 
-				return mv;
 			} else {
 				mv.setViewName("login");
 				mv.addObject("msg", "fail");
 
-				return mv;
 			}
-			
-		}else {
-			mv.setViewName("main");
-			return mv;
-		}
-		
 
+		} else if (type.equals("b")) {
+			if (srs == true) {
+				//System.out.println("b의 true");
+				sdto = cs.sellserCustomer(id);
+				mv.setViewName("selmain");
+				session.setMaxInactiveInterval(60 * 60);
+				session.setAttribute("sellist", sdto);
+				mv.addObject("msg", "success");
+
+			} else {
+				mv.setViewName("login");
+				mv.addObject("msg", "fail");
+
+			}
+		} else {
+			mv.setViewName("login");
+
+		}
+		return mv;
 	}
 
 	@RequestMapping("/logout")
@@ -96,7 +112,7 @@ public class ServiceContoller {
 		// 값이 안넘오 오고 있음
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("update");
-		
+
 		return mv;
 	}
 

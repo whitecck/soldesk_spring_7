@@ -38,7 +38,7 @@ input {width: 70%; height : 25px; }
 <script type="text/javascript">
  
 //     아이디와 비밀번호가 맞지 않을 경우 가입버튼 비활성화를 위한 변수설정
-    var idCheck = 0;
+    var idCheck = 0;	
     var pwdCheck = 0;
     //아이디 체크하여 가입버튼 비활성화, 중복확인.(수정해야함)
     /*
@@ -117,7 +117,7 @@ input {width: 70%; height : 25px; }
 	</div>
 	<!-- content -->
 	<div id="content_wrap">
-		<form action="insertOk">
+		<form action="userinsertOk">
 		<!-- id입력란  -->
 		<div class="input_div">
 			<input type="text" name="c_loginid" id="c_loginid" placeholder=" 아이디" required oninput="checkId()"/>

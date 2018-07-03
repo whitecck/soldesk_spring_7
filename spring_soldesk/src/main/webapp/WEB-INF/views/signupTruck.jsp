@@ -107,7 +107,7 @@ input {width: 70%; height : 25px; }
 	</div>
 	<!-- content -->
 	<div id="content_wrap">
-		<form action="#">
+		<form action="TruckinsertOk">
 		<!-- id입력란  -->
 		<div class="input_div">
 			<input type="text" name="id" id="id" placeholder=" 아이디" required oninput="checkId()"/>

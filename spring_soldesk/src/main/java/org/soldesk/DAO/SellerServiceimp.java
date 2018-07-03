@@ -13,7 +13,7 @@ public class SellerServiceimp implements SellerService {
 	sellerServiceDAO ssd;
 
 	@Override
-	public boolean loginCheck(String id, String pw) {
+	public boolean selloginCheck(String id, String pw) {
 		boolean rs = ssd.loginCheck(id, pw);
 		if (rs == true) {
 			return rs;
@@ -24,11 +24,6 @@ public class SellerServiceimp implements SellerService {
 	@Override
 	public SellerDTO viewCustomer(String id) {
 		return ssd.viewMember(id);
-	}
-
-	@Override
-	public void logout(HttpSession session) {
-		session.invalidate();
 	}
 
 	@Override
