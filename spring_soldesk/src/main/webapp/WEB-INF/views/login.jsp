@@ -73,8 +73,8 @@
 			
 			<div id="input">
 				<div id="input_radio">
-					<input type="radio" name="type" value="1" checked> 손님
-  					<input type="radio" name="type" value="2"> 사장님
+					<input type="radio" name="type" value="a" checked> 손님
+  					<input type="radio" name="type" value="b"> 사장님
 				</div>
 				<div id="input_id">
 					<input type="text" name="id" id="id" placeholder="  아이디"/></div>

@@ -24,7 +24,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	@Override
-	public CustomerDTO CustomergetData(int c_id) {
+	public CustomerDTO CustomergetData(String c_id) {
 		
 		return ss.selectOne("CustomergetData", c_id);
 	}
@@ -37,8 +37,8 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	@Override
-	public void CustomerUpdate(CustomerDTO customerDTO) {
-		ss.update("CustomerUpdate", customerDTO);
+	public void CustomerUpdate(CustomerDTO dto) {
+		ss.update("CustomerUpdate", dto);
 		
 	}
 

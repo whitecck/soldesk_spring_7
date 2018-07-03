@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="serviceMapper">
-  	<select id="loginCheckId" resultType="String">
+  	<select id="CheckId" resultType="org.soldesk.DTO.CustomerDTO" parameterType="String">
   		select * from customer 
   		where c_loginid = #{c_loginid}
   	</select>
@@ -18,8 +18,24 @@
   		where c_loginid = #{c_loginid} and c_pw = #{c_pw}
   	</select>
   	
+  	
   	<select id="viewMember" resultType="org.soldesk.DTO.CustomerDTO">
   		select * from customer
-  		wehre c_id = #{c_id} and c_loginid = #{c_loginid}
+  		wehre c_loginid = #{c_loginid}
   	</select>
+  	
+  	<!-- <select id="loginSeller" resultType="org.soldesk.DTO.sellerDTO" parameterType="String">
+  		select * from seller
+  		where s_loginid = #{s_loginid} and s_pw = #{s_pw}
+  	</select>
+  	
+  	<select id="sellerCk" resultType="String">
+  		select * from seller
+  		where s_loginid = #{s_loginid} and s_pw = #{s_pw}
+  	</select>
+  	
+  	<select id="viewSeller" resultType="org.soldesk.DTO.sellerDTO">
+  		select * form seller
+  		where s_loginid = #{s_loginid}
+  	</select> -->
   </mapper>

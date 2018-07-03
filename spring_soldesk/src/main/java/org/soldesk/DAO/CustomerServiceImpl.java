@@ -1,6 +1,9 @@
 package org.soldesk.DAO;
 
+import java.util.List;
+
 import javax.inject.Inject;
+import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -25,8 +28,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public CustomerDTO viewCustomer(CustomerDTO dto) {
-		return csd.viewMember(dto);
+	public CustomerDTO viewCustomer(String id) {
+		return csd.viewMember(id);
 	}
 
 	@Override
@@ -34,4 +37,15 @@ public class CustomerServiceImpl implements CustomerService{
 		session.invalidate();
 	}
 
+	@Override
+	public CustomerDTO selectCustomer(String id) {
+		
+		return csd.selectOne(id);
+	}
+
+
+	@Override
+	public void customerUpdate(int c_id,String c_name, String c_phone, String c_pw, String c_email,CustomerDTO dto) {
+		csd.customerUpdate(c_id,c_name, c_phone, c_pw, c_email,dto);
+	}
 }

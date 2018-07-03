@@ -1,6 +1,7 @@
 package org.soldesk.DAO;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -42,8 +43,8 @@ public class CustomerServiceDAOImpl implements CustomerServiceDAO{
 	}
 
 	@Override
-	public CustomerDTO viewMember(CustomerDTO dto) {
-		return ss.selectOne("viewMembre", dto);
+	public CustomerDTO viewMember(String id) {
+		return ss.selectOne("viewMembre", id);
 	}
 
 	@Override
@@ -51,30 +52,19 @@ public class CustomerServiceDAOImpl implements CustomerServiceDAO{
 	}
 
 	@Override
-	public HashMap<String, String> loginck(String id, String pw) {
-		boolean rs = false;
+	public CustomerDTO selectOne(String c_loginid) {
 		
-		HashMap<String , String> idpw = new HashMap<String, String>();
-		idpw.put(id, id);
-		idpw.put(pw, pw);
-		
-		String ck = ss.selectOne("loginck", idpw);
-		
-		/*System.out.println(id);
-		System.out.println(pw);
-		값은 오고 있ㅇ므*/
-		
-		System.out.println(ck);
-		// 현재 값이 없어 
-		
-		/*String idck = ss.selectOne("loginCheckId", id);
-		String pwck = ss.selectOne("loginCheckpw", pw);
-		System.out.println(idck);
-		System.out.println(pwck);*/
-		if(ck!=null) {
-			rs = true;
-		}
-		return null;
+		return ss.selectOne("CheckId", c_loginid);
 	}
+
+	@Override
+	public void customerUpdate(int c_id,String c_name, String c_phone, String c_pw, String c_email,CustomerDTO dto) {
+		ss.update("CustomerUpdate", dto);
+		/*ss.update("CustomerUpdate", c_name);
+		ss.update("CustomerUpdate", c_phone);
+		ss.update("CustomerUpdate", c_pw);
+		ss.update("CustomerUpdate", c_email);*/
+	}
+
 
 }

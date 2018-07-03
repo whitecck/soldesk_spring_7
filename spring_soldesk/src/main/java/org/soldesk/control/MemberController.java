@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soldesk.DAO.CustomerDAO;
+import org.soldesk.DAO.CustomerServiceDAOImpl;
+import org.soldesk.DAO.CustomerServiceImpl;
 import org.soldesk.DTO.CustomerDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ public class MemberController {
 
 	@Inject
 	CustomerDAO dao;
+	CustomerServiceImpl cs;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
@@ -49,22 +52,22 @@ public class MemberController {
 		return "main";
 	}
 
-	@RequestMapping("/singup")
+	@RequestMapping("/signupUser")
 	// 회원가입 페이지 이동
-	public String insertOne() {
-		return "singup";
+	public String signupUser() {
+		return "signupUser";
 	}
 
-	@RequestMapping("/singupOk")
+	@RequestMapping("/insertOk")
 	// 회원가입
-	public ModelAndView insertOk(@ModelAttribute CustomerDTO CusDTO, Model model) {
+	public ModelAndView insertOk(@ModelAttribute CustomerDTO cdto, Model model) {
 		// 작동 잘됨
-		ModelAndView mv = new ModelAndView("singupOk");
+		ModelAndView mv = new ModelAndView("insertOk");
 
-		mv.setViewName("singupOk");
-		model.addAttribute("list", CusDTO);
+		mv.setViewName("insertOk");
+		model.addAttribute("list", cdto);
 
-		dao.CustomerInsert(CusDTO);
+		dao.CustomerInsert(cdto);
 		return mv;
 	}
 
@@ -74,21 +77,17 @@ public class MemberController {
 		return "mypage1";
 	}
 
-	@RequestMapping("/update")
-	// 업데이트 페이지 이동
-	public String update() {
-		return "update";
-	}
-
 	@RequestMapping("/updateOk")
-	public ModelAndView updateFormOk(@ModelAttribute CustomerDTO CusDTO, Model model) {
+	public ModelAndView updateFormOk(@ModelAttribute CustomerDTO dto, Model model,@RequestParam String c_id) {
 		// 계정 수정 실행
 		ModelAndView mv = new ModelAndView("updateOK");
-
+		
 		mv.setViewName("updateOk");
-		model.addAttribute("list", CusDTO);
+		model.addAttribute("dto", cs.selectCustomer(c_id));
+		
+		System.out.println(dto.getC_id());
 
-		dao.CustomerUpdate(CusDTO);
+		dao.CustomerUpdate(dto);
 
 		return mv;
 	}
@@ -109,44 +108,4 @@ public class MemberController {
 		return "deleteOk";
 	}
 
-	/*@RequestMapping("/login")
-	public String login() {
-		// 로긴 페이지 이동
-		return "login";
-	}*/
-
-/*	@RequestMapping(value = "/loginOk", method = RequestMethod.POST)
-	public ModelAndView loginOk(@ModelAttribute CustomerDTO dto, HttpSession session) {
-		boolean result = service.loginCheck(dto, session);
-		ModelAndView mv = new ModelAndView();
-		
-		if(result==true) {
-			mv.setViewName("main");
-			mv.addObject("msg", "eoa");
-		}else {
-			mv.setViewName("login");
-			mv.addObject("msg", "ss");
-		}
-		
-		return mv;
-
-		// 로긴 페이지에 라디오 버튼 값을 가져와서 
-		// 다오에서 나오는 출력값을 가지고 2개의 경우를 만들어야함 하나는 정보가 일치 했을떄
-		// 테이블 안에 있는 정보를 가지고 세션에 담구는거
-		// 다른 하나는 아이디가 틀리면 안된다고 메세지 띄우고 다시 로긴페이지로 넘기는방법
-
-		model.addAttribute("id", c_loginid);
-		model.addAttribute("pw", c_pw);
-	}
-
-	@RequestMapping(value = "/logout")
-	public ModelAndView logout(HttpSession session) {
-		// 로그인 끝어버리기
-		service.logout(session);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		mv.addObject("msg", "logout");
-		return mv;
-	}
-*/
 }

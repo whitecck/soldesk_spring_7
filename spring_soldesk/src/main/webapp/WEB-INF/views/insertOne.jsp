@@ -12,10 +12,6 @@
 	<form action="insertOk">
 	<table>
 		<tr>
-			<th>번호</th>
-			<td><input type="text" name="c_id" id="c_id" /></td>
-		</tr>
-		<tr>
 			<th>이름</th>
 			<td><input type="text" name="c_name" id="c_name" /></td>
 		</tr>
