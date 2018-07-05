@@ -50,9 +50,16 @@
 			console.log(userid +  " : " +userpw);
 			
 			document.frm.action="loginOk";
-			document.frm.method="GET";
+			document.frm.method="POST";
 			document.frm.submit();
 		});
+		$("#btnid").on('click',function(){
+			var type = $("#type").val();
+			
+			document.frm.action="findid"
+			document.frm.submit();
+		});
+
 	});
 </script>
 
@@ -73,8 +80,8 @@
 			
 			<div id="input">
 				<div id="input_radio">
-					<input type="radio" name="type" value="a" checked> 손님
-  					<input type="radio" name="type" value="b"> 사장님
+					<input type="radio" name="type" id="a" value="a" checked> 손님
+  					<input type="radio" name="type" id="b" value="b"> 사장님
 				</div>
 				<div id="input_id">
 					<input type="text" name="id" id="id" placeholder="  아이디"/></div>
@@ -85,14 +92,14 @@
 					<input type="button" value="로그인"  id="btn"/>
 				</div>
 			</div>
-			</form>	
 			<!-- login inform find -->
 			<div id="minfo">
-				<a href="#" class="info">아이디찾기</a>
+				<a href="findcusid" class="info" id="btnid">아이디찾기</a>
 				<span class="bar">|</span>
-				<a href="#" class="info">비밀번호찾기</a>
+				<a href="customerfindpw" class="info" id="btnpw">비밀번호찾기</a>
 				<span class="bar">|</span>
-				<a href="#" class="info">회원가입</a>
+				<a href="#" class="info" id="insert">회원가입</a>
+			</form>	
 			</div>
 		</div>
 	</div>

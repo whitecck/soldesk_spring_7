@@ -60,10 +60,6 @@ public class CustomerServiceDAOImpl implements CustomerServiceDAO{
 	@Override
 	public void customerUpdate(int c_id,String c_name, String c_phone, String c_pw, String c_email,CustomerDTO dto) {
 		ss.update("CustomerUpdate", dto);
-		/*ss.update("CustomerUpdate", c_name);
-		ss.update("CustomerUpdate", c_phone);
-		ss.update("CustomerUpdate", c_pw);
-		ss.update("CustomerUpdate", c_email);*/
 	}
 	
 	@Override
@@ -75,7 +71,6 @@ public class CustomerServiceDAOImpl implements CustomerServiceDAO{
 		
 		String ck = ss.selectOne("selloginCk", idpw);
 		
-		//System.out.println(ck);
 		
 		if(ck!=null) {
 			return true;
@@ -97,6 +92,64 @@ public class CustomerServiceDAOImpl implements CustomerServiceDAO{
 	public void customersellerUpdate(int c_id, String c_name, String c_phone, String c_pw, String c_email, SellerDTO dto) {
 		ss.update("SellerUpdate", dto);
 		
+	}
+
+	@Override
+	public boolean customerfindId(String c_name) {
+		String rs = ss.selectOne("customerfindId", c_name);
+		
+		if (rs!=null) {
+			return true;
+		}
+		return false;
+		
+	}
+
+	@Override
+	public CustomerDTO customerviewId(String c_name) {
+		return ss.selectOne("customerviewId", c_name);
+	}
+
+	@Override
+	public boolean customerfindPw(String c_loginid) {
+		String rs = ss.selectOne("customerfindPw", c_loginid);
+		if(rs!=null) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public CustomerDTO customerviewPw(String c_loginid) {
+		return ss.selectOne("customerviewPw", c_loginid);
+	}
+
+	@Override
+	public boolean sellerfindId(String s_name) {
+		String rs = ss.selectOne("sellerfindId", s_name);
+		if(rs!=null) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public SellerDTO sellerviewId(String s_name) {
+		return ss.selectOne("sellerviewId", s_name);
+	}
+
+	@Override
+	public boolean sellerfinePw(String s_loginid) {
+		String rs = ss.selectOne("sellerfindPw", s_loginid);
+		if(rs!=null) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public SellerDTO sellerviewPw(String s_loginid) {
+		return ss.selectOne("sellerviewPw", s_loginid);
 	}
 
 

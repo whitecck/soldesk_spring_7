@@ -54,6 +54,27 @@ public class CustomerDAOImpl implements CustomerDAO{
 				+ "", customerDTO);
 		
 	}
+
+	@Override
+	public CustomerDTO findId(String c_loginid) {
+		return ss.selectOne("CustomerFindId", c_loginid);
+	}
+
+	@Override
+	public CustomerDTO findPw(String c_loginid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean bofindid(String c_loginid) {
+		boolean rs = ss.selectOne("CustomerFindId", c_loginid);
+		if(rs==true) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	
 	
 	

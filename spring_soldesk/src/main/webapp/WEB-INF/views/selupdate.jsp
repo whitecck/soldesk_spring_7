@@ -10,56 +10,57 @@
 	$(function(){
 		$("#c_iid").hide();
 		$("#btn").on('click',function(){
-			var loginid = $("#c_loginid").val();
+			var loginid = $("#s_loginid").val();
 			console.log(loginid);
 		});
 		$("#update").on('click',function(){
-			var id = $("#c_id").val();
-			var iid = $("#c_iid").val();
+			var id = $("#s_id").val();
+			var iid = $("#s_iid").val();
 			console.log(id);
 			
 			if(id == iid){
 				alert("회원정보가 수정되엇쓰빈다");
 				
-			document.frm.action="updateOk";
+			document.frm.action="selupdateOk";
 			document.frm.method="GET";
 			document.frm.submit();
 			console.log(loginid);
 				
 			}else {
 				alert("회원번호를 똑바로 입력해주세여");
-				$("#c_id").focus();
+				$("#s_id").focus();
 				return
 			}
 			
 		});
+		$("#s_iid").hide();
 	});
 </script>
 </head>
 <body>
-	<h2>update.jsp</h2>
-	<form action="/updateOk" id="frm" name="frm">
-	<input type="text" name="c_iid" id="c_iid" value="${list.c_id }" />
+<h2>selupdate.jsp</h2>
+	<form action="/selupdateOk" id="frm" name="frm">
+	<input type="text" name="s_iid" id="s_iid" value="${sellist.s_id }" />
 	<table>
 		<tr>
 			<th>회원번호</th>
-			<td><input type="text" name="c_id" id="c_id" placeholder="${list.c_id }를 입력해주세요"/></td>
+			<td><input type="text" name="s_id" id="s_id" placeholder="${sellist.s_id }를 입력해주세요"/></td>
 		</tr>
 		<tr>
 			<th>비번</th>
-			<td><input type="text" name="c_pw" id="c_pw" /></td>
+			<td><input type="text" name="s_pw" id="s_pw" /></td>
 		</tr>
 		<tr>
 			<th>이름</th>
-			<td><input type="text" name="c_name" id="c_name" /></td>
+			<td><input type="text" name="s_name" id="s_name" /></td>
 		</tr>
 		<tr>
 			<th>번호</th>
-			<td><input type="text" name="c_phone" id="c_phone" /></td>
+			<td><input type="text" name="s_phone" id="s_phone" /></td>
 		</tr>
 		<tr>
 			<th>이메일</th>
-			<td><input type="text" name="c_email" id="c_email" /></td>
+			<td><input type="text" name="s_email" id="s_email" /></td>
 		</tr>
 		<tr>
 			<th colspan="2">
@@ -69,5 +70,6 @@
 		</tr>
 	</table>
 	</form>
+
 </body>
 </html>

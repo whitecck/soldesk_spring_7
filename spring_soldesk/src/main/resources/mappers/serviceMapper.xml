@@ -39,4 +39,46 @@
   		where s_loginid = #{s_loginid}
   	</select>
   	
+  	<select id="customerfindId" resultType="String">
+  		select * from customer
+  		where  c_name = #{c_name}
+  	</select>
+  	
+  	<select id="customerviewId" resultType="org.soldesk.DTO.CustomerDTO">
+  		select * from customer
+  		where c_name = #{c_name}
+  	</select>
+  	
+  	<select id="customerfindPw" resultType="String">
+  		select * from customer
+  		where  c_loginid = #{c_loginid}
+  	</select>
+  	
+  	<select id="customerviewPw" resultType="org.soldesk.DTO.CustomerDTO">
+  		select * from customer
+  		where c_loginid = #{c_loginid}
+  	</select>
+  	
+  	<!-- seller -->
+  	
+  	<select id="sellerfindId" resultType="String">
+  		select * from seller
+  		where  s_name = #{s_name}
+  	</select>
+  	
+  	<select id="sellerviewId" resultType="org.soldesk.DTO.CustomerDTO">
+  		select * from seller
+  		where s_name = #{s_name}
+  	</select>
+  	
+  	<select id="sellerfindPw" resultType="String">
+  		select * from seller
+  		where  s_loginid = #{s_loginid}
+  	</select>
+  	
+  	<select id="sellerviewPw" resultType="org.soldesk.DTO.CustomerDTO">
+  		select * from customer
+  		where s_loginid = #{s_loginid}
+  	</select>
+  	
   </mapper>

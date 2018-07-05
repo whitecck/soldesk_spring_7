@@ -33,14 +33,6 @@ public class SellerDTO {
 		this.s_dotori = s_dotori;
 	}
 
-	public void setS_time(String s_time) {
-		this.s_time = s_time;
-	}
-
-	public void setS_category(String s_category) {
-		this.s_category = s_category;
-	}
-
 	public int getS_id() {
 		return s_id;
 	}
@@ -73,6 +65,14 @@ public class SellerDTO {
 		this.s_loginid = s_loginid;
 	}
 
+	public String getS_image() {
+		return s_image;
+	}
+
+	public void setS_image(String s_image) {
+		this.s_image = s_image;
+	}
+
 	public String getS_pw() {
 		return s_pw;
 	}
@@ -97,12 +97,12 @@ public class SellerDTO {
 		this.s_open = s_open;
 	}
 
-	public int getS_dotori() {
-		return s_dotori;
+	public String getS_time() {
+		return s_time;
 	}
 
-	public void setS_dotori(int s_dotori) {
-		this.s_dotori = s_dotori;
+	public void setS_time(String s_time) {
+		this.s_time = s_time;
 	}
 
 	public String getS_location() {
@@ -113,13 +113,22 @@ public class SellerDTO {
 		this.s_location = s_location;
 	}
 
-	public String getS_image() {
-		return s_image;
+	public String getS_category() {
+		return s_category;
 	}
 
-	public void setS_image(String s_image) {
-		this.s_image = s_image;
+	public void setS_category(String s_category) {
+		this.s_category = s_category;
 	}
+
+	public int getS_dotori() {
+		return s_dotori;
+	}
+
+	public void setS_dotori(int s_dotori) {
+		this.s_dotori = s_dotori;
+	}
+
 	
 	
 	

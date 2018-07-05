@@ -10,7 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.soldesk.DAO.CustomerDAO;
 import org.soldesk.DAO.CustomerServiceDAOImpl;
 import org.soldesk.DAO.CustomerServiceImpl;
+import org.soldesk.DAO.SellerDAO;
+import org.soldesk.DAO.SellerDAOImpl;
 import org.soldesk.DTO.CustomerDTO;
+import org.soldesk.DTO.SellerDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +29,8 @@ public class MemberController {
 	@Inject
 	CustomerDAO dao;
 	CustomerServiceImpl cs;
+	@Inject
+	SellerDAO sdao;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
@@ -51,22 +56,25 @@ public class MemberController {
 	public String goMain() {
 		return "main";
 	}
-
-	@RequestMapping("/signupUser")
-	// 회원가입 페이지 이동
-	public String signupUser() {
-		return "signupUser";
-	}
 	
-	@RequestMapping("/signupTruck")
-	public String signupTruck() {
-		return "signupTruck";
+	@RequestMapping("/insertAll")
+	public ModelAndView insertAll(@RequestParam String type) {
+		// type 값에 따른 회원가입 페이지 이동 
+		ModelAndView mv = new ModelAndView();
+		System.out.println(type);
+		
+		if(type.equals("a")) {
+			mv.setViewName("signupUser");
+		}else {
+			mv.setViewName("signupTruck");
+		}
+		
+		return mv;
 	}
 
 	@RequestMapping("/userinsertOk")
-	// 회원가입
+	// 일반 계정 생성
 	public ModelAndView insertOk(@ModelAttribute CustomerDTO cdto, Model model) {
-		// 작동 잘됨
 		ModelAndView mv = new ModelAndView("insertOk");
 
 		mv.setViewName("insertOk");
@@ -75,6 +83,23 @@ public class MemberController {
 		dao.CustomerInsert(cdto);
 		return mv;
 	}
+	
+	@RequestMapping("/truckinsertOk")
+	// 판매자 계정 생성
+	public String truckinsertOk(@ModelAttribute()SellerDTO sdto) {
+		
+		System.out.println(sdto.getS_loginid());
+		System.out.println(sdto.getS_pw());
+		System.out.println(sdto.getS_name());
+		System.out.println(sdto.getS_phone());
+		System.out.println(sdto.getS_email()); 
+		
+		
+		
+		sdao.SellerInsert(sdto);
+		
+		return "truckinsertOk";
+	}
 
 	@RequestMapping("/mypage1")
 	// 업데이트 및 삭제 페이지 이동
@@ -82,7 +107,8 @@ public class MemberController {
 		return "mypage1";
 	}
 
-	@RequestMapping("/updateOk")
+	@RequestMapping("/cusupdateOk") 
+	// customer 수정 
 	public ModelAndView updateFormOk(@ModelAttribute CustomerDTO dto, Model model,@RequestParam String c_id) {
 		// 계정 수정 실행
 		ModelAndView mv = new ModelAndView("updateOK");
@@ -94,6 +120,26 @@ public class MemberController {
 
 		dao.CustomerUpdate(dto);
 
+		return mv;
+	}
+	
+	@RequestMapping("/truckOpen")
+	public String truckMain2() {
+		return "truckOpen";
+	}
+	
+	@RequestMapping("/selupdateOk")
+	// seller 수정
+	public ModelAndView selupdateOk(@ModelAttribute SellerDTO sdto, Model model,@RequestParam String s_id) {
+		
+		ModelAndView mv = new ModelAndView("selupdateOk");
+		
+		mv.setViewName("selupdateOk");
+		// model.addAttribute("sdto", ); 출력할 값 너허야핳마
+		
+		System.out.println(sdto.getS_id());
+		
+		sdao.SellerInsert(sdto);
 		return mv;
 	}
 
@@ -112,5 +158,38 @@ public class MemberController {
 
 		return "deleteOk";
 	}
+	
+	@RequestMapping("selupdate")
+	public String selupdate() {
+		return "selupdate";
+	}
+	
+	/*@RequestMapping("open")
+	 * 아직 아무것도 안됨
+	public void s_open(@RequestParam String open) {
+		int i = Integer.parseInt(open);
+		System.out.println(i);
+	}
+	
+	@RequestMapping("close")
+	public void s_close() {
+		
+	}*/
+	
+	
+	@RequestMapping("test")
+	// test용 하나
+	public String test(@RequestParam String flag) {
+		System.out.println(flag);
+		
+		return "detailMenu";
+	}
+	
+	@RequestMapping("testA")
+	// test용 둘
+	public String testA() {
+		return "truckOpen";
+	}
+	
 
 }

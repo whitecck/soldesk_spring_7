@@ -25,9 +25,8 @@
   	select * from seller where s_open=1 and s_location=${s_location}
   	 </select>
   	<insert id="SellerInsert" parameterType="org.soldesk.DTO.SellerDTO">
-  	
-  	insert into seller (s_name,s_image,s_phone,s_loginid,s_pw,s_email,s_location,)
-  	values (#{s_name},#{s_image},#{s_phone},#{s_loginid},#{s_pw},#{s_email},#{s_location})
+  	insert into seller (s_name, s_phone, s_loginid, s_image, s_pw, s_email, s_time, s_location, s_category)
+  	values (#{s_name}, #{s_phone}, #{s_loginid}, 0, #{s_pw} , #{s_email}, 0,0,0)
   	
   	</insert>
   	
@@ -43,5 +42,16 @@
   	where s_id = #{s_id}
   	
   	</delete>
+  	
+  	<select id="selCkId">
+  		select * form seller
+  		where s_loginid = #{s_loginid}
+  	</select>
+  	
+  	<update id="sellerOpen">
+  		update seller set
+  		s_open = #{s_open} 
+  		where s_id = #{s_id}
+  	</update>
   
   </mapper>

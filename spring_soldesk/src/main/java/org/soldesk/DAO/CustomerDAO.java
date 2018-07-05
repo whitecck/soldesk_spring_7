@@ -12,6 +12,9 @@ public interface CustomerDAO {
 	public void CustomerUpdate(CustomerDTO dto); // Customer 수정
 	public void CustomerUpdate2(CustomerDTO customerDTO);
 	public void CustomerDelete(int c_id); // Customer 삭제
+	public CustomerDTO findId(String c_loginid); // 아이디 찾기
+	public boolean bofindid(String c_loginid); // 아이디 있냐 없냐 
+	public CustomerDTO findPw(String c_loginid); // 비밀번호 찾기 
 	
 	
 }

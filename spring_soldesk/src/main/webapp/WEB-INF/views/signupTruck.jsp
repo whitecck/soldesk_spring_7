@@ -76,7 +76,7 @@ input {width: 70%; height : 25px; }
     
   //재입력 비밀번호 체크하여 가입버튼 비활성화 또는 맞지않음을 알림.
     function checkPwd() {
-        var inputed = $('#pw').val();
+        var inputed = $('#s_pw').val();
         var reinputed = $('#pw_re').val();
         if(reinputed=="" && (inputed != reinputed || inputed == reinputed)){
 			$('#checkpw').css("color","black");
@@ -107,31 +107,32 @@ input {width: 70%; height : 25px; }
 	</div>
 	<!-- content -->
 	<div id="content_wrap">
-		<form action="TruckinsertOk">
+		<form action="truckinsertOk">
 		<!-- id입력란  -->
 		<div class="input_div">
-			<input type="text" name="id" id="id" placeholder=" 아이디" required oninput="checkId()"/>
+			<input type="text" name="s_loginid" id="s_loginid" placeholder=" 아이디" required oninput="checkId()"/>
 			<div>6자 이상 영어 대 소문자, 숫자</div>
 			<div id="checkid" >실시간 아이디 유효성검사</div>
 		</div>
 		<!-- 비밀번호 입력란 -->
 		<div class="input_div">
-			<input type="password" name="pw" id="pw" placeholder=" 비밀번호" required/>
+			<input type="password" name="s_pw" id="s_pw" placeholder=" 비밀번호" required/>
 			<div> 영어 대 소문자, 숫자, 특수문자 사용가능</div>
 			<input type="password" name="pw_re" id="pw_re" placeholder=" 비밀번호 확인" required oninput="checkPwd()"/>
 			<div id="checkpw">패스워드 일치 하는지 ㅇㅅㅇ</div>
 		</div>
 		<!-- 이름 입력부분 -->
 		<div class="input_div">
-			<input type="text" name="name" id="name" placeholder=" 트럭이름" required/>		
+			<input type="text" name="s_name" id="s_name" placeholder=" 트럭이름" required/>		
 		</div>
+		<!-- 핸드폰 번호 -->
 		<div class="input_div">
 			<input type="text" name="010" id="zero" value="010" disabled="disabled" required />
-			<input type="text" name="phone" id="phone" placeholder=" 8자리  - 없이 입력" required />
+			<input type="text" name="s_phone" id="s_phone" placeholder=" 8자리  - 없이 입력" required />
 		</div>
 		<!-- 이메일 입력부분 -->
 		<div class="input_div">
-			<input type="email" name="email" id="email" placeholder=" 이메일" />
+			<input type="email" name="s_email" id="s_email" placeholder=" 이메일" />
 		</div>
 		<div id="regdiv">
 			<input type="submit" value="트럭 등록" required/>

@@ -23,7 +23,7 @@ public class sellerServiceDAOimp implements sellerServiceDAO{
 		
 		String ck = ss.selectOne("selloginCk", idpw);
 		
-		System.out.println(ck);
+		// System.out.println(ck);
 		
 		if(ck!=null) {
 			return true;

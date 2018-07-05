@@ -33,6 +33,8 @@ public class ServiceContoller {
 
 	@Inject
 	CustomerService cs;
+	
+	@Inject
 	SellerService ss;
 
 	@RequestMapping("/login")
@@ -40,25 +42,18 @@ public class ServiceContoller {
 		return "login";
 	}
 
-	@RequestMapping(value = "/loginOk", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginOk", method = RequestMethod.POST)
 	public ModelAndView loginOk(@RequestParam String id, @RequestParam String pw, @RequestParam String type,
 			HttpSession session, @ModelAttribute CustomerDTO dto, @ModelAttribute SellerDTO sdto) {
 
 		ModelAndView mv = new ModelAndView();
-		// System.out.println(result);
-		System.out.println(type);
-		System.out.println(id);
-		System.out.println(pw);
-		System.out.println(type);
-		// System.out.println(srs);
+
 		boolean result = cs.loginCheck(id, pw);
 		boolean srs = cs.selloginCheck(id, pw);
-		System.out.println("result : " + result);
-		System.out.println("srs : " + srs);
+
 		if (type.equals("a")) {
 			// 일반유저
 			if (result == true) {
-				//System.out.println("a의 true");
 				dto = cs.selectCustomer(id);
 				mv.setViewName("main");
 				session.setMaxInactiveInterval(60 * 60);
@@ -73,9 +68,8 @@ public class ServiceContoller {
 
 		} else if (type.equals("b")) {
 			if (srs == true) {
-				//System.out.println("b의 true");
 				sdto = cs.sellserCustomer(id);
-				mv.setViewName("selmain");
+				mv.setViewName("truckMain2");
 				session.setMaxInactiveInterval(60 * 60);
 				session.setAttribute("sellist", sdto);
 				mv.addObject("msg", "success");
@@ -107,7 +101,7 @@ public class ServiceContoller {
 		return "update";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public ModelAndView CustomerUpdate(@ModelAttribute CustomerDTO dto, HttpServletRequest req, HttpSession session) {
 		// 값이 안넘오 오고 있음
 		ModelAndView mv = new ModelAndView();
@@ -116,7 +110,7 @@ public class ServiceContoller {
 		return mv;
 	}
 
-	@RequestMapping(value = "/updateOk", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateOk", method = RequestMethod.POST)
 	public String CustomerUp(@ModelAttribute CustomerDTO dto, Model model, HttpServletRequest req) {
 
 		int c_id = Integer.parseInt(req.getParameter("c_id"));
@@ -125,10 +119,6 @@ public class ServiceContoller {
 		String c_pw = req.getParameter("c_pw");
 		String c_email = req.getParameter("c_email");
 
-		System.out.println(req.getParameter("c_id"));
-		System.out.println(c_name);
-		System.out.println(c_email);
-
 		dto.setC_id(c_id);
 		dto.setC_name(c_name);
 		dto.setC_pw(c_pw);
@@ -136,5 +126,55 @@ public class ServiceContoller {
 
 		cs.customerUpdate(c_id, c_name, c_phone, c_pw, c_email, dto);
 		return "main";
+	}
+	
+	@RequestMapping("/findid")
+	public String findcusid() {
+			return "findcusid";			
+	}
+	
+	@RequestMapping("/customerfindpw")
+	public String customerfindpw() {
+		return "cusfindpw";
+	}
+	
+	@RequestMapping("/findcusidOk")
+	public ModelAndView findcusidOk(@RequestParam String c_name, @ModelAttribute CustomerDTO cdto,Model model) {
+		ModelAndView mv = new ModelAndView();
+		//System.out.println(c_name);
+
+		boolean rs = cs.customerfindId(c_name);
+		boolean srs = cs.sellerfindId(c_name);
+		//System.out.println(rs);
+	
+			if(rs==true) {
+				cdto = cs.customerviewId(c_name);
+				model.addAttribute("cdto", cdto);
+				mv.setViewName("findcusidok");
+			}else{
+				model.addAttribute("msg", "false");
+				mv.setViewName("findcusid");
+			}		
+	
+		return mv;
+	}
+	
+	@RequestMapping("/findcuspwOk")
+	public ModelAndView customerfindPw(@RequestParam String c_loginid,@ModelAttribute CustomerDTO cdto, @ModelAttribute SellerDTO sdto, Model model) {
+		ModelAndView mv = new ModelAndView();
+		
+		boolean rs = cs.customerfindPw(c_loginid);
+		
+		if(rs==true) {
+			cdto = cs.customerviewPw(c_loginid);
+			model.addAttribute("cdto", cdto);
+			mv.setViewName("cusfindpwOk");
+		}else {
+			model.addAttribute("msg", "false");
+			mv.setViewName("cusfindpw");
+		}
+		
+		return mv;
+		
 	}
 }
