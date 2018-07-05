@@ -25,14 +25,15 @@
 	
 	<div id="info">
 		<div id="infotit">
-			<h3>  > 개점 정보</h3>
+			<h3>  > 개점 정보 : 고쳐봄 ㅇㅅㅇ</h3>
+			
 		</div>
 		<div id="title"><h3>가게 이름</h3></div>		
 		<div id="imgcon">
 			<img src="" alt="트럭썸네일" />
 		</div>
 		<div id="optime">
-			<span>폐점시간</span>
+			<span>개점시간</span>
 			<select id="o_hour">
 				<option value="12">12</option>
 				<option value="13">13</option>
@@ -52,7 +53,7 @@
 			</select>
 		</div>
 		<div id="clstime">
-			<span>개점시간</span>
+			<span>폐점시간</span>
 			<select id="c_hour">
 				<option value="19">19</option>
 				<option value="20">20</option>
@@ -84,9 +85,6 @@
 </form>
 </div>
 <script>
-
-
-
 	//주소팝업 소스-------------------------
     var element_wrap = document.getElementById('wrap');
 
@@ -147,18 +145,16 @@ function dosubmit() {
 	var open = document.getElementById('o_hour').value +":" + document.getElementById('o_min').value;
 	var cls = document.getElementById('c_hour').value +":"+ document.getElementById('c_min').value;
 	//open시간 ~ 닫는시간 결정
-	var time = cls-open;
-
-	if(time > 0 ){
-		var times = open + " - " +cls;
-		
-		console.log(times);
-		
-		//정보 저장하는곳으로주소 옮겨줌..?
-		//location.href="test.jsp?addr="+address+"&open="+open + "&cls="+cls;
-	}
+	console.log("address" + address);
+	console.log("open" + open);
+	console.log("cls" + cls);
 	
-	console.log(time);
+	var times = open + " - " +cls;
+		
+	console.log("times" + times);
+		
+	//정보 저장하는곳으로주소 옮겨줌..?
+	//location.href="test.jsp?addr="+address+"&times="+times;
 	
 }
     
