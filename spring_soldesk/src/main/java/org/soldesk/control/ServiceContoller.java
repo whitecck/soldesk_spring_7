@@ -55,7 +55,7 @@ public class ServiceContoller {
 			// 일반유저
 			if (result == true) {
 				dto = cs.selectCustomer(id);
-				mv.setViewName("main");
+				mv.setViewName("userMain");
 				session.setMaxInactiveInterval(60 * 60);
 				session.setAttribute("list", dto);
 				mv.addObject("msg", "success");
@@ -90,7 +90,7 @@ public class ServiceContoller {
 	public ModelAndView logout(HttpSession session) {
 		cs.logout(session);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
+		mv.setViewName("userMain");
 		mv.addObject("msg", "로그아웃");
 		return mv;
 	}

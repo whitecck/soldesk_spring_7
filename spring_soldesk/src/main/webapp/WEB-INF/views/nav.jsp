@@ -36,8 +36,34 @@ ul { margin-right: 10%;}
 }
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#loginid").hide();
+		$("#logout").hide();
+		var sessionid = $("#loginid").val();
+		if(sessionid==""){
+			$("#id").hide();
+			$("#logout").hide();
+			$("#lo").show();
+		}else{
+			$("#id").show();
+			$("#logout").show();
+			$("#lo").hide();
+		}
+		
+		$("#logout").on('click',function(){
+			$("#id").hide();
+			$("#logout").hide();
+			$("#lo").show();
+			
+		});
+	});
+</script>
+
 </head>
 <body>
+<input type="text" name="loginid" id="loginid" value="${list.c_loginid }" />
 <!--상단-->
     <div class ="header">
         <div class ="header-bar">
@@ -49,9 +75,10 @@ ul { margin-right: 10%;}
 
             <div class ="nav">
             <ul>
-                <li><a href="#">로그인</a></li>
-            
-                <li><a href="#">회원가입</a></li>
+                <li id="lo" name="lo"><a href="login">로그인</a></li>
+                <span id="id" name="id"><li>${list.c_loginid }</li></span>
+                <li id="logout" name="logout"><a href="logout">로그아웃</a></li>
+
             </ul>
             </div>
 
