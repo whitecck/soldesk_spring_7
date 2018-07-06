@@ -83,6 +83,27 @@ table h2{padding-bottom: 10px; }
 	.sel2{width: 100px; height: 30px; font-size: 17px;}
 }
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#mapdetail").on('click',function(){
+			
+			var map = $("#map").val();
+			var mapdetail = $("#mapdetail").val();
+			console.log(map + " : " + mapdetail);
+		});
+		
+		$("td").on('click',function(){
+			var btn1 = $("#btn1");
+			var btn2 = $("#btn2");
+			
+			console.log(btn1);
+			console.log(btn2);
+			
+		});
+	});
+</script>
 </head>
 <body>
 <!-- nav var 부분 -->
@@ -109,7 +130,8 @@ table h2{padding-bottom: 10px; }
             <option value=""  selected >---------------</option>
             <option value="블라블라">블라블라</option>
             <option value="룰루루룰">룰루루룰</option>
-            <option value="블라블라">블라블라</option>
+            <option val
+            ue="블라블라">블라블라</option>
             <option value="룰루루룰">룰루루룰</option>
             <option value="블라블라">블라블라</option>
             <option value="룰루루룰">룰루루룰</option>
@@ -120,30 +142,27 @@ table h2{padding-bottom: 10px; }
     	
         <table>
                  <tr>
-                     <td id = btn1><a href="#"><img src="resources/img/grill.png" alt="">
+                     <td id = btn1><a href="grill"><img src="resources/img/grill.png" alt="">
                      <h2>그릴</h2></a></td>
-                     <td id = btn2><a href="#"><img src="resources/img/noodle.png" alt="">
+                     <td id = btn2><a href="noodle"><img src="resources/img/noodle.png" alt="">
                      <h2>면/밥</h2></a></td>
-                     <td id = btn3><a href="#"><img src="resources/img/stick.png" alt="">
+                     <td id = btn3><a href="stick"><img src="resources/img/stick.png" alt="">
                     <h2>꼬치</h2></a></td>
                  </tr>
              
                  <tr>
-                     <td id = btn4><a href="#"><img src="resources/img/fri.png" alt="">
+                     <td id = btn4><a href="fri"><img src="resources/img/fri.png" alt="">
                         <h2>튀김</h2></a></td>
-                     <td id = btn5><a href="#"><img src="resources/img/desert.png" alt="">
+                     <td id = btn5><a href="desert"><img src="resources/img/desert.png" alt="">
                         <h2>디저트</h2></a>
                      </td>
-                     <td id = btn6><a href="#"><img src="resources/img/guitar.png" alt="">
+                     <td id = btn6><a href="guitar"><img src="resources/img/guitar.png" alt="">
                         <h2>기타</h2></a></td>
                  </tr>
              
              </table> 
-
-
             	
     </div>
-
 
 <jsp:include page="footer.jsp"></jsp:include>
 

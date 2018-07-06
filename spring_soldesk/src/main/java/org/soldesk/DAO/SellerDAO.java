@@ -13,4 +13,7 @@ public interface SellerDAO {
 	public void SellerDelete(int s_id);//삭제
 	public List<SellerDTO> SellerOpen();
 	public List<SellerDTO> SellerOpenLoc(String s_location);
+	
+	public List<SellerDTO> selchoice(String s_location,String s_category);
+	public void sellerUpdateTimeLo(String s_time,String s_location,String s_id);
 }

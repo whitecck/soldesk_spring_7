@@ -3,6 +3,7 @@ package org.soldesk.control;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.soldesk.DAO.SellerDAO;
 import org.soldesk.DAO.SellerDAOImpl;
 import org.soldesk.DTO.CustomerDTO;
 import org.soldesk.DTO.SellerDTO;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -88,14 +90,6 @@ public class MemberController {
 	// 판매자 계정 생성
 	public String truckinsertOk(@ModelAttribute()SellerDTO sdto) {
 		
-		System.out.println(sdto.getS_loginid());
-		System.out.println(sdto.getS_pw());
-		System.out.println(sdto.getS_name());
-		System.out.println(sdto.getS_phone());
-		System.out.println(sdto.getS_email()); 
-		
-		
-		
 		sdao.SellerInsert(sdto);
 		
 		return "truckinsertOk";
@@ -164,31 +158,21 @@ public class MemberController {
 		return "selupdate";
 	}
 	
-	/*@RequestMapping("open")
-	 * 아직 아무것도 안됨
-	public void s_open(@RequestParam String open) {
-		int i = Integer.parseInt(open);
-		System.out.println(i);
-	}
 	
-	@RequestMapping("close")
-	public void s_close() {
+	@RequestMapping("selchoice")
+	public ModelAndView selchoice(@RequestParam String s_location,@RequestParam String s_id,@RequestParam String o_hour,@RequestParam String o_min,@RequestParam String c_hour, @RequestParam String c_min, Model model) {
+		ModelAndView mv = new ModelAndView();
 		
-	}*/
-	
-	
-	@RequestMapping("test")
-	// test용 하나
-	public String test(@RequestParam String flag) {
-		System.out.println(flag);
+		String s = o_hour + ":" + o_min + "-" + c_hour + ":" + c_min;
 		
-		return "detailMenu";
-	}
-	
-	@RequestMapping("testA")
-	// test용 둘
-	public String testA() {
-		return "truckOpen";
+		String s_time = s;
+		
+		sdao.sellerUpdateTimeLo(s_time, s_location, s_id);
+		mv.setViewName("truckMain2");
+		
+		
+		System.out.println("일단 옴 ");
+		return mv;
 	}
 	
 

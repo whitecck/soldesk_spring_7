@@ -53,5 +53,15 @@
   		s_open = #{s_open} 
   		where s_id = #{s_id}
   	</update>
+  	
+  	<select id="sellerchoice" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
+  		select * from seller
+  		where s_location = #{s_location} and s_category = #{s_category}
+  	</select>
   
+  	<update id="selupdatetimelo" parameterType="String">
+  		update seller set
+  		s_time = #{s_time}, s_location = #{s_location}
+  		where s_id = #{s_id}
+  	</update>
   </mapper>

@@ -42,7 +42,7 @@ input{width :100px; height: 70px; margin:  10px; border : none; color: white; fo
 				cls.style.backgroundColor = "gray";
 				flag = 0;
 				//truckOpen.jsp 으로 이어져야합니다!!
-				//location.href=""
+				location.href="truckOpen"
 			}
 		}
 		//영업종료

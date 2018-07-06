@@ -1,5 +1,6 @@
 package org.soldesk.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -58,5 +59,25 @@ public class SellerDAOImpl implements SellerDAO{
 	public List<SellerDTO> SellerOpenLoc(String s_location) {
 		return ss.selectList("SellerOpenLoc", s_location);
 	}
+	
+	@Override
+	public List<SellerDTO> selchoice(String s_location, String s_category) {
+		HashMap<String, String> sel = new HashMap<String, String>();
+		sel.put("s_location", s_location);
+		sel.put("s_category", s_category);
+		return ss.selectList("selchoice", sel);
+	}
+
+	@Override
+	public void sellerUpdateTimeLo(String s_time, String s_location,String s_id) {
+		HashMap<String, String> sel = new HashMap<String, String>();
+		
+		sel.put("s_time", s_time);
+		sel.put("s_location", s_location);
+		sel.put("s_id", s_id);
+		
+		ss.update("selupdatetimelo", sel);
+	}
+
 
 }

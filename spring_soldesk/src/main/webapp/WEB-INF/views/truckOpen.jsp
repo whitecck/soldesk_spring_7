@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style type="text/css">
 /*-------tablet-------*/
 .con{width: 100%;text-align: center;}
@@ -27,6 +28,7 @@
 		<div id="infotit">
 			<h3>  > 개점 정보 : 고쳐봄 ㅇㅅㅇ</h3>
 			
+<form action="selchoice">
 		</div>
 		<div id="title"><h3>가게 이름</h3></div>		
 		<div id="imgcon">
@@ -34,7 +36,7 @@
 		</div>
 		<div id="optime">
 			<span>개점시간</span>
-			<select id="o_hour">
+			<select id="o_hour" name="o_hour">
 				<option value="12">12</option>
 				<option value="13">13</option>
 				<option value="14">14</option>
@@ -45,7 +47,7 @@
 				<option value="19">19</option>				
 				<option value="20">20</option>				
 			</select>
-			<select id="o_min">
+			<select id="o_min" name="o_min">
 				<option value="00">00</option>
 				<option value="15">15</option>
 				<option value="30">30</option>
@@ -54,7 +56,7 @@
 		</div>
 		<div id="clstime">
 			<span>폐점시간</span>
-			<select id="c_hour">
+			<select id="c_hour" name="c_hour">
 				<option value="19">19</option>
 				<option value="20">20</option>
 				<option value="21">21</option>
@@ -64,7 +66,7 @@
 				<option value="01">새벽01</option>				
 				<option value="02">새벽02</option>				
 			</select>
-			<select id="c_min">
+			<select id="c_min" name="c_min">
 				<option value="00">00</option>
 				<option value="15">15</option>
 				<option value="30">30</option>
@@ -74,17 +76,18 @@
 		
 	</div>
 	<input type="button" onclick="execDaumPostcode()" value="주소찾기"><br>
-<form action="#">
 	
 	<div id="wrap" >
 	<img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" onclick="foldDaumPostcode()" alt="접기 버튼">
 	</div>
-	<input type="text" id="address" class="d_form large" placeholder="주소" required">
-	
-	<input type="button" value="개점!!!" onclick = "dosubmit()" />
+	<input type="text" id="address" class="d_form large" placeholder="주소" name="s_location" required">
+	<input type="text" name="s_id" id="s_id" placeholder="${sellist.s_id }를 입력해주세요" />
+	<!-- <input type="button" value="개점!!!" onclick = "dosubmit()" /> -->
+	<input type="submit" value="개점!!" />
 </form>
 </div>
 <script>
+
 	//주소팝업 소스-------------------------
     var element_wrap = document.getElementById('wrap');
 
@@ -154,7 +157,7 @@ function dosubmit() {
 	console.log("times" + times);
 		
 	//정보 저장하는곳으로주소 옮겨줌..?
-	//location.href="test.jsp?addr="+address+"&times="+times;
+	location.href="selchoice?addr="+address+"&times="+times;
 	
 }
     

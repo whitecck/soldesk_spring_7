@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SQL을 저장하는 mapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.soldesk.mapper.categoryMapper">
+  <select id="grill" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
+  	select * from seller
+  	where s_category = "grill"
+  </select>
+  
+  <select id="noodle" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
+  	select * from seller
+  	where s_category = "noodle"
+  </select>
+  
+  <select id="stick" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
+  select * from seller
+  	where s_category = "stick"
+  </select>
+  
+  <select id="fri" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
+  select * from seller
+  	where s_category = "fri"
+  </select>
+  
+  <select id="desert" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
+  select * from seller
+  	where s_category = "desert"
+  </select>
+  
+  <select id="guitar" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
+  select * from seller
+  	where s_category = "guitar"
+  </select>
+  
+  </mapper>
