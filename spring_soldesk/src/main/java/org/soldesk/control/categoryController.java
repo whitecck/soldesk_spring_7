@@ -26,6 +26,12 @@ public class categoryController {
 		return new SellerDTO();
 	}
 	
+	@RequestMapping("test")
+	public String fds() {
+		
+		return "df";
+	}
+	
 	@RequestMapping(value="/grill")
 	public String grill(Model model) {
 		List<SellerDTO> list = cdao.grill();
@@ -53,21 +59,21 @@ public class categoryController {
 	public String fri(Model model) {
 		List<SellerDTO> list = cdao.fri();
 		model.addAttribute("list", list);
-		return "fri";
+		return "list2";
 	}
 	
 	@RequestMapping("desert")
 	public String desert(Model model) {
 		List<SellerDTO> list = cdao.desert();
 		model.addAttribute("list", list);
-		return "desert";
+		return "list2";
 	}
 	
 	@RequestMapping("guitar")
 	public String guitar(Model model) {
 		List<SellerDTO> list = cdao.guitar();
 		model.addAttribute("list", list);
-		return "guitar";
+		return "list2";
 	}
 }
 

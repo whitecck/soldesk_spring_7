@@ -136,6 +136,8 @@ public class MemberController {
 		sdao.SellerInsert(sdto);
 		return mv;
 	}
+	
+
 
 	@RequestMapping("/delete")
 	public String delete() {

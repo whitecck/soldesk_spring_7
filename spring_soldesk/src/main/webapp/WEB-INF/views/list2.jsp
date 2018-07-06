@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,11 +40,11 @@ input {width: 70%; height : 25px; }
 #div5{width:100%; margin-left: 90%; margin-top:15%; height: 30px;}
 }
 
-	
 </style>
+
 </head>
 <body>
-	<div id="div6">전국 > 그릴류</div>
+	<div id="div6">efq</div>
 	<hr />
 	
 	
@@ -52,9 +52,10 @@ input {width: 70%; height : 25px; }
 	<div class="input_div">
 	<div id="div1">
 		<img src="" alt="" />
+		<!-- 이미지 넣을 공간  -->
 	</div>
-	
-	<div id="div2">가게 이름</div>
+	<c:forEach var="list" items="${list }"></c:forEach>
+	<div id="div2">${list.s_name }</div>
 	<div id="div3">가게 내용
 		<div id="div5">영업중</div>
 	</div>

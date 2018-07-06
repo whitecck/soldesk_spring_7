@@ -55,6 +55,15 @@ input{width :100px; height: 70px; margin:  10px; border : none; color: white; fo
 		}
 
 	}
+	
+	$(function(){
+		$("#mytruck").on('click',function(){
+			location.href="selupdate";
+		});
+		$("s_open").hide();
+		/* var open = $("#s_open").val();
+		$(open.equals) */
+	});
 </script>
 </head>
 <body>
@@ -63,6 +72,7 @@ input{width :100px; height: 70px; margin:  10px; border : none; color: white; fo
 
 
 <div class="wrap">
+<input type="text" name="s_open" id="s_open" value="${list.s_open }" />
 	<div id="content">
 		<div id="flag">
 			<h3>오늘 영업상태는?</h3>
