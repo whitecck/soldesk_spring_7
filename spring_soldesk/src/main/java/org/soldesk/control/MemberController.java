@@ -13,6 +13,7 @@ import org.soldesk.DAO.CustomerServiceDAOImpl;
 import org.soldesk.DAO.CustomerServiceImpl;
 import org.soldesk.DAO.SellerDAO;
 import org.soldesk.DAO.SellerDAOImpl;
+import org.soldesk.DAO.SellerService;
 import org.soldesk.DTO.CustomerDTO;
 import org.soldesk.DTO.SellerDTO;
 import org.springframework.http.HttpRequest;
@@ -33,6 +34,8 @@ public class MemberController {
 	CustomerServiceImpl cs;
 	@Inject
 	SellerDAO sdao;
+	@Inject
+	SellerService ss;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
@@ -60,28 +63,26 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/insertAll")
-	public ModelAndView insertAll(@RequestParam String type) {
+	public String insertAll() {
 		// type 값에 따른 회원가입 페이지 이동 
-		ModelAndView mv = new ModelAndView();
+		/*ModelAndView mv = new ModelAndView();
 		System.out.println(type);
 		
 		if(type.equals("a")) {
 			mv.setViewName("signupUser");
 		}else {
 			mv.setViewName("signupTruck");
-		}
+		}*/
 		
-		return mv;
+		return "signupUser";
 	}
 
 	@RequestMapping("/userinsertOk")
 	// 일반 계정 생성
-	public ModelAndView insertOk(@ModelAttribute CustomerDTO cdto, Model model) {
+	public ModelAndView insertOk(@ModelAttribute CustomerDTO cdto) {
 		ModelAndView mv = new ModelAndView("insertOk");
 
 		mv.setViewName("insertOk");
-		model.addAttribute("list", cdto);
-
 		dao.CustomerInsert(cdto);
 		return mv;
 	}
@@ -103,14 +104,10 @@ public class MemberController {
 
 	@RequestMapping("/cusupdateOk") 
 	// customer 수정 
-	public ModelAndView updateFormOk(@ModelAttribute CustomerDTO dto, Model model,@RequestParam String c_id) {
-		// 계정 수정 실행
+	public ModelAndView updateFormOk(@ModelAttribute CustomerDTO dto,@RequestParam String c_id) {
 		ModelAndView mv = new ModelAndView("updateOK");
 		
 		mv.setViewName("updateOk");
-		model.addAttribute("dto", cs.selectCustomer(c_id));
-		
-		System.out.println(dto.getC_id());
 
 		dao.CustomerUpdate(dto);
 
@@ -124,14 +121,10 @@ public class MemberController {
 	
 	@RequestMapping("/selupdateOk")
 	// seller 수정
-	public ModelAndView selupdateOk(@ModelAttribute SellerDTO sdto, Model model,@RequestParam String s_id) {
-		
+	public ModelAndView selupdateOk(@ModelAttribute SellerDTO sdto,@RequestParam String s_id) {
 		ModelAndView mv = new ModelAndView("selupdateOk");
 		
 		mv.setViewName("selupdateOk");
-		// model.addAttribute("sdto", ); 출력할 값 너허야핳마
-		
-		System.out.println(sdto.getS_id());
 		
 		sdao.SellerInsert(sdto);
 		return mv;
@@ -162,18 +155,22 @@ public class MemberController {
 	
 	
 	@RequestMapping("selchoice")
-	public ModelAndView selchoice(@RequestParam String s_location,@RequestParam String s_id,@RequestParam String o_hour,@RequestParam String o_min,@RequestParam String c_hour, @RequestParam String c_min, Model model) {
+	public ModelAndView selchoice(@RequestParam String s_location,@RequestParam String s_id,@RequestParam String o_hour,@RequestParam String o_min,@RequestParam String c_hour, @RequestParam String c_min,@RequestParam String s_open,@ModelAttribute SellerDTO sdto, Model model) {
 		ModelAndView mv = new ModelAndView();
 		
 		String s = o_hour + ":" + o_min + "-" + c_hour + ":" + c_min;
 		
 		String s_time = s;
 		
+		int i = Integer.parseInt(s_open);
+		
 		sdao.sellerUpdateTimeLo(s_time, s_location, s_id);
 		mv.setViewName("truckMain2");
 		
+		model.addAttribute("list", sdto);
 		
-		System.out.println("일단 옴 ");
+		
+		//System.out.println("일단 옴 ");
 		return mv;
 	}
 	

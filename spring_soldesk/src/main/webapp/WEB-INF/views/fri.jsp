@@ -170,22 +170,12 @@
 	}
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		$("#infomation").on('click',function(){
-			
-			
-		});
-	});
-
-</script>
 <title>Insert title here</title>
 </head>
 <body>
 	
 	<div id="container">
-		<p id="mainmenu">그릴</p>
+		<p id="mainmenu">튀김</p>
 		<c:forEach var="list" items="${list }">
 			<div id="infomation">
 				<div id="info_img">

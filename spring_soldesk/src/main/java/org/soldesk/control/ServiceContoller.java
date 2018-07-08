@@ -47,7 +47,6 @@ public class ServiceContoller {
 			HttpSession session, @ModelAttribute CustomerDTO dto, @ModelAttribute SellerDTO sdto) {
 
 		ModelAndView mv = new ModelAndView();
-
 		boolean result = cs.loginCheck(id, pw);
 		boolean srs = cs.selloginCheck(id, pw);
 
@@ -59,13 +58,10 @@ public class ServiceContoller {
 				session.setMaxInactiveInterval(60 * 60);
 				session.setAttribute("list", dto);
 				mv.addObject("msg", "success");
-
 			} else {
 				mv.setViewName("login");
 				mv.addObject("msg", "fail");
-
 			}
-
 		} else if (type.equals("b")) {
 			if (srs == true) {
 				sdto = cs.sellserCustomer(id);
@@ -81,7 +77,6 @@ public class ServiceContoller {
 			}
 		} else {
 			mv.setViewName("login");
-
 		}
 		return mv;
 	}
@@ -128,7 +123,7 @@ public class ServiceContoller {
 		return "main";
 	}
 	
-	@RequestMapping("/findid")
+	@RequestMapping("/findcusid")
 	public String findcusid() {
 			return "findcusid";			
 	}

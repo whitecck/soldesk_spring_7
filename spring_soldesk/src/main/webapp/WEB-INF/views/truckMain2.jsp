@@ -41,7 +41,6 @@ input{width :100px; height: 70px; margin:  10px; border : none; color: white; fo
 				open.style.backgroundColor = "tomato";
 				cls.style.backgroundColor = "gray";
 				flag = 0;
-				//truckOpen.jsp 으로 이어져야합니다!!
 				location.href="truckOpen"
 			}
 		}
@@ -60,9 +59,15 @@ input{width :100px; height: 70px; margin:  10px; border : none; color: white; fo
 		$("#mytruck").on('click',function(){
 			location.href="selupdate";
 		});
-		$("s_open").hide();
-		/* var open = $("#s_open").val();
-		$(open.equals) */
+		var open = $("#s_open").val();
+		if(open.equals("1")){
+			flag=0;
+		}else{
+			flag = 1;
+		}
+		$("#aa").on('click',function(){
+			console.log(open);
+		});
 	});
 </script>
 </head>
@@ -70,9 +75,10 @@ input{width :100px; height: 70px; margin:  10px; border : none; color: white; fo
 
 <!-- nav 부착해야하는 부부우우우우운 -->
 
+<input type="text" name="s_open" id="s_open" value="11${sellist.s_open }" />
+<input type="button" value="dsds" id="aa" />
 
 <div class="wrap">
-<input type="text" name="s_open" id="s_open" value="${list.s_open }" />
 	<div id="content">
 		<div id="flag">
 			<h3>오늘 영업상태는?</h3>

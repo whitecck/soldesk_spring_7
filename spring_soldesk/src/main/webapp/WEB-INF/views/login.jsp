@@ -98,7 +98,7 @@
 				<span class="bar">|</span>
 				<a href="customerfindpw" class="info" id="btnpw">비밀번호찾기</a>
 				<span class="bar">|</span>
-				<a href="#" class="info" id="insert">회원가입</a>
+				<a href="insertAll" class="info" id="insert">회원가입</a>
 			</form>	
 			</div>
 		</div>

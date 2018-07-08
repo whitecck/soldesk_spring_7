@@ -26,7 +26,7 @@
 	
 	<div id="info">
 		<div id="infotit">
-			<h3>  > 개점 정보 : 고쳐봄 ㅇㅅㅇ</h3>
+			<h3>  > 개점 정보 </h3>
 			
 <form action="selchoice">
 		</div>
@@ -81,7 +81,8 @@
 	<img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" onclick="foldDaumPostcode()" alt="접기 버튼">
 	</div>
 	<input type="text" id="address" class="d_form large" placeholder="주소" name="s_location" required">
-	<input type="text" name="s_id" id="s_id" placeholder="${sellist.s_id }를 입력해주세요" />
+	<input type="text" name="s_id" id="s_id" placeholder="${sellist.s_id } 회원 번호 를 입력해주세요" />
+	<input type="text" name="s_open" id="s_open"  placeholder="개점 ㅇ 을 입력해주세요"/>
 	<!-- <input type="button" value="개점!!!" onclick = "dosubmit()" /> -->
 	<input type="submit" value="개점!!" />
 </form>

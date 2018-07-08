@@ -30,8 +30,17 @@
   	<delete id="ItemsDelete" parameterType="int">
   		delete from items
   		where i_id = #{i_id}
-  	
   	</delete>
+  	
+  	<select id="menuview" parameterType="int" resultType="org.soldesk.DTO.ItemsDTO" >
+		select * from items
+		where s_id = #{s_id} 
+  	</select>
+  	
+  	<select id="id1view" resultType="org.soldesk.DTO.ItemsDTO">
+  	 select * from items
+    where s_id ="1"
+  	</select>
   
   </mapper>
   

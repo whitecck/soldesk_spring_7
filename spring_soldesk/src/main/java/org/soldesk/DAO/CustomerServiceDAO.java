@@ -34,5 +34,6 @@ public interface CustomerServiceDAO {
 	public SellerDTO sellerviewId(String s_name);
 	public boolean sellerfinePw(String s_loginid);
 	public SellerDTO sellerviewPw(String s_loginid);
+	public SellerDTO sellerviewOp(int s_id);
 	
 }

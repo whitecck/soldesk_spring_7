@@ -7,11 +7,10 @@ public class ItemsDTO {
 	private int i_price; //상품가격
 	private String i_desc; //상품설명
 	private String i_image; //상품사진
-	private String i_category; //상품 카테고리
 	
 	public ItemsDTO() {}
 
-	public ItemsDTO(int i_id, int s_id, String i_name, int i_price, String i_desc, String i_image, String i_category) {
+	public ItemsDTO(int i_id, int s_id, String i_name, int i_price, String i_desc, String i_image) {
 		super();
 		this.i_id = i_id;
 		this.s_id = s_id;
@@ -19,7 +18,6 @@ public class ItemsDTO {
 		this.i_price = i_price;
 		this.i_desc = i_desc;
 		this.i_image = i_image;
-		this.i_category = i_category;
 	}
 
 	public int getI_id() {
@@ -69,16 +67,6 @@ public class ItemsDTO {
 	public void setI_image(String i_image) {
 		this.i_image = i_image;
 	}
-
-	public String getI_category() {
-		return i_category;
-	}
-
-	public void setI_category(String i_category) {
-		this.i_category = i_category;
-	}
-
-		
 	
 	
 }

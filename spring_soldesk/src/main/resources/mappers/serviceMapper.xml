@@ -66,7 +66,7 @@
   		where  s_name = #{s_name}
   	</select>
   	
-  	<select id="sellerviewId" resultType="org.soldesk.DTO.CustomerDTO">
+  	<select id="sellerviewId" resultType="org.soldesk.DTO.SellerDTO">
   		select * from seller
   		where s_name = #{s_name}
   	</select>
@@ -76,9 +76,14 @@
   		where  s_loginid = #{s_loginid}
   	</select>
   	
-  	<select id="sellerviewPw" resultType="org.soldesk.DTO.CustomerDTO">
-  		select * from customer
+  	<select id="sellerviewPw" resultType="org.soldesk.DTO.SellerDTO">
+  		select * from seller
   		where s_loginid = #{s_loginid}
+  	</select>
+  	 	
+  	<select id="sellerviewOp" resultType="org.soldesk.DTO.SellerDTO">
+  	 select * from seller
+  	 where s_id = #{s_id}
   	</select>
   	
   </mapper>

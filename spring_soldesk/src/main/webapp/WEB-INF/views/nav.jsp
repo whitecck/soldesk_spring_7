@@ -76,7 +76,7 @@ ul { margin-right: 10%;}
             <div class ="nav">
             <ul>
                 <li id="lo" name="lo"><a href="login">로그인</a></li>
-                <span id="id" name="id"><li>${list.c_loginid }</li></span>
+                <span id="id" name="id"><li><a href="update">${list.c_loginid }</a></li></span>
                 <li id="logout" name="logout"><a href="logout">로그아웃</a></li>
 
             </ul>

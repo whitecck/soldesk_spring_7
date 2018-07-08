@@ -152,5 +152,10 @@ public class CustomerServiceDAOImpl implements CustomerServiceDAO{
 		return ss.selectOne("sellerviewPw", s_loginid);
 	}
 
+	@Override
+	public SellerDTO sellerviewOp(int s_id) {
+		return ss.selectOne("sellerviewOp", s_id);
+	}
+
 
 }

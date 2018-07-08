@@ -47,4 +47,16 @@ public class ItemsDAOImpl implements ItemsDAO{
 		ss.delete("ItemsDelete", i_id);
 	}
 
+	@Override
+	public List<ItemsDTO> itemsview(int s_id) {
+		return ss.selectList("menuview", s_id);
+	}
+
+	@Override
+	public List<ItemsDTO> id1() {
+		return ss.selectList("id1view");
+	}
+	
+	
+
 }

@@ -11,4 +11,5 @@ public interface categoryDAO {
 	public List<SellerDTO> fri();
 	public List<SellerDTO> desert();
 	public List<SellerDTO> guitar();
+	public List<SellerDTO> findgrill(String s_location);
 }

@@ -1,5 +1,6 @@
 package org.soldesk.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -47,6 +48,12 @@ public class categoryDAOImp implements categoryDAO {
 	@Override
 	public List<SellerDTO> guitar() {
 		return ss.selectList("guitar");
+	}
+
+	@Override
+	public List<SellerDTO> findgrill(String s_location) {
+		
+		return ss.selectList("findgrill", s_location);
 	}
 
 }

@@ -122,6 +122,16 @@
 	bottom: 20px;
 }
 
+#cls {
+	border: 4px solid gray;
+	padding: 5px;
+	background: gray;
+	position: relative;
+	color: white;
+	right: px;
+	bottom: 20px;
+}
+
 /*----------mobaile----------*/
 @media ( max-width : 480px) {
 	html {
@@ -170,13 +180,22 @@
 	}
 }
 </style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$("#infomation").on('click',function(){
-			
+		var open = $("#open").val();
+		//("#s_open").append("영업중");
+		/* if(open.equals("1")){
+			("#info_status").css('background-color','gray');
+			("#s_open").append("영업중");
+		} */
+		$("#btn").on('click',function(){
+			console.log(open);
 			
 		});
+		
+		
 	});
 
 </script>
@@ -185,21 +204,26 @@
 <body>
 	
 	<div id="container">
-		<p id="mainmenu">그릴</p>
-		<c:forEach var="list" items="${list }">
+		<p id="mainmenu"> <span id="location"> location ${s_location }</span> > 그릴</p>
+		<c:forEach var="list" items="${s }">
+				<a href="menuview?s_id=${list.s_id }">
 			<div id="infomation">
 				<div id="info_img">
 					<img src="" alt="가게그림" />
 				</div>
 				<div id="info_detail">
 					<span>${list.s_name }</span> <br /> <span>${list.s_location }</span>
+					<input type="hidden" name="s_id" id="s_id" value="${list.s_id }" disabled="disabled"/>
 					<br /> <br /> <br /> <br /> <br />
 				</div>
 				<div id="info_status">
 					<b id="bar">영업중</b>
+					<b id="cls">영업끝</b>
 				</div>
 			</div>
+			</a>
 		</c:forEach>
 	</div>
 </body>
 </html>
+

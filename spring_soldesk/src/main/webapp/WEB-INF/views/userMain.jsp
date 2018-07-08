@@ -93,13 +93,11 @@ table h2{padding-bottom: 10px; }
 			var mapdetail = $("#mapdetail").val();
 			console.log(map + " : " + mapdetail);
 		});
-		
+		$(".category").hide();
 		$("td").on('click',function(){
-			var btn1 = $("#btn1");
-			var btn2 = $("#btn2");
 			
-			console.log(btn1);
-			console.log(btn2);
+			document.frm.action="findgrill";
+			document.frm.submit();
 			
 		});
 	});
@@ -110,40 +108,37 @@ table h2{padding-bottom: 10px; }
 <jsp:include page="nav.jsp"></jsp:include>
 
 <!-- 트럭 메인부분 -->
+<form action="#" id="frm" name="frm">
     <div class="container">
     	<div id = "bg">
         <h1>언제까지 기다려?</h1>
 
        <div class = "sel">
-       <select class="sel1" name="map" id="map">
-            <option value="전국"  selected>전국</option>
-            <option value="서울">서울</option>
-            <option value="경기">경기</option>
-            <option value="인천">인천</option>
-            <option value="충청">충청</option>
-            <option value="강원">강원</option>
-            <option value="경상">경상</option>
-            <option value="전라">전라</option>
+       
+       <!--
+       	전국 1 
+       	여의도 2
+       	반포 3
+       	동대문 4
+       	청계천 5
+       	강남 6 
+        -->
+       <select class="sel1" name="s_location" id="s_location">
+            <option value="1"  selected>전국</option>
+            <option value="2">여의도</option>
+            <option value="3">반포</option>
+            <option value="4">동대문</option>
+            <option value="5">청계천</option>
+            <option value="6">강남</option>
        </select> <!--sel1 end-->
-
-       <select class="sel2" name="mapdetail" id="mapdetail">
-            <option value=""  selected >---------------</option>
-            <option value="블라블라">블라블라</option>
-            <option value="룰루루룰">룰루루룰</option>
-            <option val
-            ue="블라블라">블라블라</option>
-            <option value="룰루루룰">룰루루룰</option>
-            <option value="블라블라">블라블라</option>
-            <option value="룰루루룰">룰루루룰</option>
-        
-       </select> <!--sel2 end-->
+       
    </div> <!--sel end-->
        </div>
     	
         <table>
                  <tr>
-                     <td id = btn1><a href="grill"><img src="resources/img/grill.png" alt="">
-                     <h2>그릴</h2></a></td>
+                     <td id = btn1 ><img src="resources/img/grill.png" alt="">
+                     <h2>그릴<input type="text" class="category" name="s_category" id="s_category" value="grill"/></h2></td>
                      <td id = btn2><a href="noodle"><img src="resources/img/noodle.png" alt="">
                      <h2>면/밥</h2></a></td>
                      <td id = btn3><a href="stick"><img src="resources/img/stick.png" alt="">
@@ -163,8 +158,7 @@ table h2{padding-bottom: 10px; }
              </table> 
             	
     </div>
-
+</form>
 <jsp:include page="footer.jsp"></jsp:include>
-
 </body>
 </html>

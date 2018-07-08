@@ -16,4 +16,5 @@ public interface SellerDAO {
 	
 	public List<SellerDTO> selchoice(String s_location,String s_category);
 	public void sellerUpdateTimeLo(String s_time,String s_location,String s_id);
+	public SellerDTO sellerview(int s_id);
 }

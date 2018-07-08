@@ -79,5 +79,10 @@ public class SellerDAOImpl implements SellerDAO{
 		ss.update("selupdatetimelo", sel);
 	}
 
+	@Override
+	public SellerDTO sellerview(int s_id) {
+		return ss.selectOne("menuview", s_id);
+	}
+
 
 }

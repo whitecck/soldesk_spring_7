@@ -129,4 +129,9 @@ public class CustomerServiceImpl implements CustomerService {
 	public SellerDTO sellerviewPw(String s_loginid) {
 		return csd.sellerviewPw(s_loginid);
 	}
+
+	@Override
+	public SellerDTO sellerviewOp(int s_id) {
+		return csd.sellerviewOp(s_id);
+	}
 }

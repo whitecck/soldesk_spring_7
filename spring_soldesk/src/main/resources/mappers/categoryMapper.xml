@@ -35,4 +35,10 @@
   	where s_category = "guitar"
   </select>
   
+  <select id="findgrill" resultType="org.soldesk.DTO.SellerDTO" parameterType="String">
+  	select * from seller
+  	where s_location = #{s_location} and s_category = "grill"
+  	order by s_open desc
+  </select>
+  
   </mapper>
